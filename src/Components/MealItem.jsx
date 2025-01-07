@@ -4,9 +4,10 @@ import Button from "./UI/Button";
 import CartContext from "../Store/CartContext";
 function MealItem({ item }) {
 
-  const {addItem,items} = useContext(CartContext)
+  const {addItem} = useContext(CartContext)
 
   function handleAddMealToCart(){
+    console.log("Added to cart ...."+item.id)
     addItem(item)
   }
 
