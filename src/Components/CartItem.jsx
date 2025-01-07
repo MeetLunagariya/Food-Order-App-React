@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import CartContext from "../Store/CartContext";
+import { currencyFormatter } from "../util/formatting";
 
 
 function CartItem({ item }) {
@@ -8,7 +9,7 @@ function CartItem({ item }) {
   return (
     <li key={item.id} className="cart-item">
       <p>
-      {item.name} - {item.quantity} * {item.price}
+      {item.name} - {item.quantity} x {currencyFormatter.format(item.price)}
       </p>
       <p className="cart-item-actions">
         <button onClick={()=>removeItem(item.id)}>-</button>
