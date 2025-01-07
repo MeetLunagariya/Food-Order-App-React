@@ -15,7 +15,7 @@ function Cart() {
   }, 0);
 
   return (
-    <Modal className="cart" open={progress === "cart"}>
+    <Modal className="cart" open={progress === "cart"} onClose={progress === "cart" ? () => hideCart() : null}>
       <h2>Your Cart</h2>
       <ul>
         {items.map((item) => (
