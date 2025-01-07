@@ -8,8 +8,7 @@ import CartItem from "./CartItem";
 
 function Cart() {
   const { items } = useContext(CartContext);
-  const { progress, hideCart } = useContext(UserProgressContext);
-  
+  const { progress, hideCart,showCheckout } = useContext(UserProgressContext);
 
   const cartItemsTotal = items.reduce((totalItemPrice, item) => {
     return totalItemPrice + item.quantity * item.price;
@@ -20,7 +19,7 @@ function Cart() {
       <h2>Your Cart</h2>
       <ul>
         {items.map((item) => (
-          <CartItem key={item.id} item={item}/>
+          <CartItem key={item.id} item={item} />
         ))}
       </ul>
       <p className="cart-total">{currencyFormatter.format(cartItemsTotal)}</p>
@@ -28,7 +27,8 @@ function Cart() {
         <Button textOnly onClick={() => hideCart()}>
           Close
         </Button>
-        <Button>Go to Check Out</Button>
+       
+        {items.length>0 && <Button onClick={() => showCheckout()} >Go to Check Out</Button>}
       </p>
     </Modal>
   );
