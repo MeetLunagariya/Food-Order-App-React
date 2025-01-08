@@ -20,7 +20,7 @@ const schema = yup.object({
     .string()
     .required("Postal Code is required")
     .matches(/^\d{5}$/, "Postal Code must be exactly 5 digits"),
-    city: yup.string().required("City is required"),
+  city: yup.string().required("City is required"),
 });
 
 function CheckOut() {

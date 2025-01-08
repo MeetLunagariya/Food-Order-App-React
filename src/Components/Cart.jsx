@@ -8,14 +8,18 @@ import CartItem from "./CartItem";
 
 function Cart() {
   const { items } = useContext(CartContext);
-  const { progress, hideCart,showCheckout } = useContext(UserProgressContext);
+  const { progress, hideCart, showCheckout } = useContext(UserProgressContext);
 
   const cartItemsTotal = items.reduce((totalItemPrice, item) => {
     return totalItemPrice + item.quantity * item.price;
   }, 0);
 
   return (
-    <Modal className="cart" open={progress === "cart"} onClose={progress === "cart" ? () => hideCart() : null}>
+    <Modal
+      className="cart"
+      open={progress === "cart"}
+      onClose={progress === "cart" ? () => hideCart() : null}
+    >
       <h2>Your Cart</h2>
       <ul>
         {items.map((item) => (
@@ -27,8 +31,10 @@ function Cart() {
         <Button textOnly onClick={() => hideCart()}>
           Close
         </Button>
-       
-        {items.length>0 && <Button onClick={() => showCheckout()} >Go to Check Out</Button>}
+
+        {items.length > 0 && (
+          <Button onClick={() => showCheckout()}>Go to Check Out</Button>
+        )}
       </p>
     </Modal>
   );

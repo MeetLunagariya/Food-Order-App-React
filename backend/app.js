@@ -56,7 +56,7 @@ app.post('/orders', async (req, res) => {
   allOrders.push(newOrder);
   await fs.writeFile('./data/orders.json', JSON.stringify(allOrders));
   res.status(201).json({ message: 'Order created!' });
-});
+}); 
 
 app.use((req, res) => {
   if (req.method === 'OPTIONS') {
